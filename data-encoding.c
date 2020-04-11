@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+static char secret[] = {
+		0x9b, 0x87, 0x85, 0x8d, 0xc8, 0x9b,
+		0x8d, 0x8b, 0x9a, 0x8d, 0x9c, 0xe8,
+		0xfa, 0x71, 0x00, 0x12
+};
+
+int main(void)
+{
+	char a = 116;
+	char b = (((a + 0x8f63) << 3) - (0x47b18)) >> 2;
+
+	for (char *p = secret; (char)(a << 1) ^ *p; p++)
+		printf("%c", (*p) ^ b);
+	
+	return 0;
+}
+
